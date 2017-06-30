@@ -1,0 +1,26 @@
+{
+  "name": "cats-as-a-service",
+  "version": "1.0.0",
+  "description": "Cats as a Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattkelly/cats-as-a-service.git"
+  },
+  "keywords": [
+    "cat",
+    "cats",
+    "service",
+    "generator",
+    "random"
+  ],
+  "author": "Matt Kelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattkelly/cats-as-a-service/issues"
+  },
+  "homepage": "https://github.com/mattkelly/cats-as-a-service#readme"
+}
