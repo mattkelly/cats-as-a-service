@@ -8,7 +8,14 @@ const doc = window.document;
 const draw = SVG(doc.documentElement);
 
 function getCatSvg() {
-    draw.circle(100,100).fill('red')
+    const head = draw.defs().ellipse(100, 80, 100).fill('burlywood');
+    const eye = draw.defs().circle(5, 5).fill('black');
+    const nose = draw.defs().polygon([[0,0], [20,0], [10,10]]).fill('pink');
+
+    draw.use(head);
+    draw.use(eye).move(30, 30);
+    draw.use(eye).move(70, 30);
+    draw.use(nose).move(40, 40);
     return draw.svg();
 }
 
