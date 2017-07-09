@@ -8,18 +8,21 @@ const doc = window.document;
 const draw = SVG(doc.documentElement);
 
 const noses = require('./nose.js');
+const colors = require('./colors.js');
 
 function getCatSvg() {
-    const head = draw.defs().ellipse(100, 80).fill('burlywood');
-    const earLeft = draw.defs().polygon([[0,0], [0,30], [30,30]]).fill('brown');
-    const earRight = draw.defs().polygon([[30,0], [30,30], [0,30]]).fill('brown');
-    const eye = draw.defs().circle(5, 5).fill('black');
+    const head = draw.defs().ellipse(100, 80).fill(colors.lightGray);
+    const earLeft = draw.defs().polygon([[0,0], [0,30], [30,30]]).fill(colors.darkGray);
+    const earRight = draw.defs().polygon([[30,0], [30,30], [0,30]]).fill(colors.darkGray);
+    const eye = draw.defs().circle(5, 5).fill(colors.black);
 
-    const whiskerStraight = draw.defs().line(35, 0).stroke('black');
-    const whiskerAngleUp = draw.defs().line(35, 5).stroke('black');
-    const whiskerAngleDown = draw.defs().line(35, -5).stroke('black');
+    const whiskerStraight = draw.defs().line(35, 0).stroke(colors.black);
+    const whiskerAngleUp = draw.defs().line(35, 5).stroke(colors.black);
+    const whiskerAngleDown = draw.defs().line(35, -5).stroke(colors.black);
 
     const nose = draw.defs().svg(noses.triangleNosePathString);
+
+    const box = draw.viewbox(0, 0, 100, 100);
 
     draw.use(earLeft).move(2, 0);
     draw.use(earRight).move(68, 0);
@@ -29,7 +32,7 @@ function getCatSvg() {
     draw.use(eye).move(30, 30);
     draw.use(eye).move(70, 30);
 
-    draw.use('triangleNose').scale(0.5, 0.5).move(70, 90).fill('#f4728e');
+    draw.use('triangleNose').scale(0.5, 0.5).move(70, 90).fill(colors.pink);
 
     draw.use(whiskerStraight).move(5, 45+5);
     draw.use(whiskerAngleUp).move(5, 39+5);
