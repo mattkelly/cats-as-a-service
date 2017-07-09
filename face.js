@@ -4,7 +4,6 @@ require('./nose.js');
 require('./whiskers.js');
 
 SVG.Face = SVG.invent({
-  // Define the type of element that should be created
   create: function(width, height) {
     SVG.G.call(this);
 
@@ -22,14 +21,10 @@ SVG.Face = SVG.invent({
     this.whiskersLeft(width/2, height/3).move(noseX/2, 15);
   },
 
-  // Specify from which existing class this shape inherits
   inherit: SVG.G,
 
-  // Add method to parent elements
   construct: {
-    // Create a rounded element
     face: function(width, height) {
-
       return this.put(new SVG.Face(width, height));
     }
   }
