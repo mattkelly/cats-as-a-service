@@ -1,4 +1,5 @@
 const http = require('http');
+const express = require('express');
 const port = process.env.PORT || 3000;
 
 const window = require('svgdom');
@@ -7,8 +8,9 @@ const SVG_PATH = require('svg.path.js');
 const doc = window.document;
 const draw = SVG(doc.documentElement);
 
-const colors = require('./colors.js');
+const svg2png = require('svg2png');
 
+const colors = require('./colors.js');
 require('./cat.js');
 
 function getCatSvg() {
@@ -27,19 +29,25 @@ function getCatSvg() {
   return catSvg;
 }
 
-const requestHandler = (request, response) => {
-  console.log(request.url);
+function getCatPng() {
+  catSvg = getCatSvg();
 
-  response.writeHead(200, {'Content-type': 'image/svg+xml'});
-  response.end(getCatSvg());
+  // TODO don't use sync
+  return svg2png.sync(catSvg, {width: 500, height: 500});
 }
 
-const server = http.createServer(requestHandler);
+var app = express();
 
-server.listen(port, (err) => {
-  if (err) {
-    return console.log('Something bad happened!', err);
-  }
-
-  console.log('Server is listening on port ' + port);
+app.get('/', function(req, res) {
+  console.log('/');
+  res.writeHead(200, {'Content-type': 'image/svg+xml'});
+  res.end(getCatSvg());
 });
+
+app.get('/png', function(req, res) {
+  console.log('/png');
+  res.writeHead(200, {'Content-type': 'image/png'});
+  res.end(getCatPng());
+});
+
+app.listen(port);

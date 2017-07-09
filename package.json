@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/mattkelly/cats-as-a-service#readme",
   "dependencies": {
+    "express": "^4.15.3",
     "svg.js": "github:mattkelly/svg.js",
     "svg.path.js": "github:mattkelly/svg.path.js",
+    "svg2png": "^4.1.1",
     "svgdom": "github:mattkelly/svgdom"
   }
 }
