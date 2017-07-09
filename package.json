@@ -25,6 +25,7 @@
   "homepage": "https://github.com/mattkelly/cats-as-a-service#readme",
   "dependencies": {
     "svg.js": "^2.6.2",
+    "svg.path.js": "github:mattkelly/svg.path.js",
     "svgdom": "0.0.15"
   }
 }
