@@ -12,7 +12,7 @@ SVG.TriangleNose = SVG.invent({
     // Create a rounded element
     triangleNose: function(width, height) {
       this.defs().svg(triangleNosePathString);
-      return this.use('triangleNose').scale(0.5, 0.5).move(0,0);
+      return this.use('triangleNose').scale(0.5, 0.5);
     }
   }
 });

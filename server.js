@@ -14,8 +14,6 @@ require('./head.js');
 require('./whisker.js');
 
 function getCatSvg() {
-    const head = draw.defs().ellipseHead(100, 80).fill(colors.lightGray);
-  
     const earLeft = draw.defs().polygon([[0,0], [0,40], [40,40]]).fill(colors.darkGray);
     const earRight = draw.defs().polygon([[40,0], [40,40], [0,40]]).fill(colors.darkGray);
     const eye = draw.defs().circle(8, 8).fill(colors.black);
@@ -31,7 +29,7 @@ function getCatSvg() {
     draw.use(earLeft).move(0, 0);
     draw.use(earRight).move(60, 0);
 
-    draw.use(head);
+    draw.ellipseHead(100, 80).fill(colors.lightGray);
 
     draw.use(eye).move(22, 30);
     draw.use(eye).move(70, 30);

@@ -26,7 +26,7 @@ SVG.Whiskers = SVG.invent({
       whiskersGroup.add(whiskerAngleUp);
       whiskersGroup.add(whiskerAngleDown);
 
-      return this.put(whiskersGroup).move(0,0);
+      return this.put(whiskersGroup);
     }
   }
 });
