@@ -13,8 +13,8 @@ require('./head.js');
 require('./face.js');
 
 function getCatSvg() {
-    const earLeft = draw.defs().polygon([[0,0], [0,40], [40,40]]).fill(colors.darkGray);
-    const earRight = draw.defs().polygon([[40,0], [40,40], [0,40]]).fill(colors.darkGray);
+    const earLeft = draw.defs().polygon([[0,0], [0,50], [50,50]]).fill(colors.darkGray);
+    const earRight = draw.defs().polygon([[50,0], [50,50], [0,50]]).fill(colors.darkGray);
 
     const body = draw.defs().rect(80, 80).radius(20, 20).fill(colors.darkGray);
 
@@ -22,14 +22,14 @@ function getCatSvg() {
     draw.viewbox(0, 0, 100, 100);
 
     // Draw the cat
-    draw.use(body).move(10, 60);
+    draw.use(body).move(10, 70);
 
     draw.use(earLeft).move(0, 0);
-    draw.use(earRight).move(60, 0);
+    draw.use(earRight).move(50, 0);
 
-    draw.ellipseHead(100, 80).fill(colors.lightGray);
+    draw.ellipseHead(100, 80).move(0, 10).fill(colors.lightGray);
 
-    const face = draw.face().move(20, 30);
+    const face = draw.face().move(20, 40);
     console.log(face.width(), face.height());
 
     // Generate the full SVG
