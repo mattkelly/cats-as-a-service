@@ -5,16 +5,21 @@ require('./whiskers.js');
 
 SVG.Face = SVG.invent({
   // Define the type of element that should be created
-  create: function() {
+  create: function(width, height) {
     SVG.G.call(this);
 
-    this.circle(8, 8).fill(colors.black).move(0, 0);
-    this.circle(8, 8).fill(colors.black).move(50, 0);
+    this._width = width;
+    this._height = height;
 
-    this.triangleNose().move(40, 30).fill(colors.pink);
+    const eyeRadius = width/12;
+    this.circle(eyeRadius).fill(colors.black).move(0, 0);
+    this.circle(eyeRadius).fill(colors.black).move(width/2, 0);
 
-    this.whiskersRight(50, 15).move(40, 15);
-    this.whiskersLeft(50, 15).move(20, 15);
+    const noseX = 40; // @TODO don't hardcode
+    this.triangleNose().move(noseX, 30).fill(colors.pink);
+
+    this.whiskersRight(width/2, height/3).move(noseX, 15);
+    this.whiskersLeft(width/2, height/3).move(noseX/2, 15);
   },
 
   // Specify from which existing class this shape inherits
@@ -23,18 +28,18 @@ SVG.Face = SVG.invent({
   // Add method to parent elements
   construct: {
     // Create a rounded element
-    face: function() {
+    face: function(width, height) {
 
-      return this.put(new SVG.Face);
+      return this.put(new SVG.Face(width, height));
     }
   }
 });
 
 SVG.extend(SVG.Face, {
   width: function() {
-    return 120;
+    return this._width;
   },
   height: function() {
-    return 50;
+    return this._height;
   },
 });
