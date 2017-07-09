@@ -39,7 +39,11 @@ function getCatSvg() {
     draw.use(whiskerAngleUp).move(60, 46+5);
     draw.use(whiskerAngleDown).move(60, 44+5);
 
-    return draw.svg();
+    catSvg = draw.svg();
+
+    draw.clear();
+
+    return catSvg;
 }
 
 const requestHandler = (request, response) => {
