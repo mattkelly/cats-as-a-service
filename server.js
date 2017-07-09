@@ -12,11 +12,11 @@ const colors = require('./colors.js');
 require('./nose.js');
 require('./head.js');
 require('./whisker.js');
+require('./face.js');
 
 function getCatSvg() {
     const earLeft = draw.defs().polygon([[0,0], [0,40], [40,40]]).fill(colors.darkGray);
     const earRight = draw.defs().polygon([[40,0], [40,40], [0,40]]).fill(colors.darkGray);
-    const eye = draw.defs().circle(8, 8).fill(colors.black);
 
     const body = draw.defs().rect(80, 80).radius(20, 20).fill(colors.darkGray);
 
@@ -31,14 +31,7 @@ function getCatSvg() {
 
     draw.ellipseHead(100, 80).fill(colors.lightGray);
 
-    draw.use(eye).move(22, 30);
-    draw.use(eye).move(70, 30);
-
-    const whiskers = draw.defs().whiskers(50, 10);
-    draw.use(whiskers).move(60,50);
-    draw.use(whiskers).flip('x',50).move(60,50);
-
-    draw.triangleNose(50, 50).move(70, 90).fill(colors.pink);
+    draw.face();
 
     // Generate the full SVG
     catSvg = draw.svg();
