@@ -14,11 +14,19 @@ function getCatSvg() {
     const head = draw.defs().ellipse(100, 80).fill(colors.lightGray);
     const earLeft = draw.defs().polygon([[0,0], [0,30], [30,30]]).fill(colors.darkGray);
     const earRight = draw.defs().polygon([[30,0], [30,30], [0,30]]).fill(colors.darkGray);
-    const eye = draw.defs().circle(5, 5).fill(colors.black);
+    const eye = draw.defs().circle(8, 8).fill(colors.black);
 
-    const whiskerStraight = draw.defs().line(35, 0).stroke(colors.black);
-    const whiskerAngleUp = draw.defs().line(35, 5).stroke(colors.black);
-    const whiskerAngleDown = draw.defs().line(35, -5).stroke(colors.black);
+    const whiskerStraight = draw.defs().line(50, 0)
+      .stroke({color: colors.black, width: 0.5});
+    const whiskerAngleUp = draw.defs().line(50, 5)
+      .stroke({color: colors.black, width: 0.5});
+    const whiskerAngleDown = draw.defs().line(50, -5)
+      .stroke({color: colors.black, width: 0.5});
+
+    var whiskersGroup = draw.defs().group();
+    whiskersGroup.add(whiskerStraight);
+    whiskersGroup.add(whiskerAngleUp);
+    whiskersGroup.add(whiskerAngleDown);
 
     const nose = draw.defs().svg(noses.triangleNosePathString);
 
@@ -29,18 +37,13 @@ function getCatSvg() {
 
     draw.use(head);
 
-    draw.use(eye).move(30, 30);
+    draw.use(eye).move(22, 30);
     draw.use(eye).move(70, 30);
 
-    draw.use('triangleNose').scale(0.5, 0.5).move(70, 90).fill(colors.pink);
+    const triangleNose = draw.use('triangleNose').scale(0.5, 0.5).move(70, 90).fill(colors.pink);
 
-    draw.use(whiskerStraight).move(5, 45+5);
-    draw.use(whiskerAngleUp).move(5, 39+5);
-    draw.use(whiskerAngleDown).move(5, 51+5);
-
-    draw.use(whiskerStraight).move(60, 45+5);
-    draw.use(whiskerAngleUp).move(60, 46+5);
-    draw.use(whiskerAngleDown).move(60, 44+5);
+    draw.use(whiskersGroup).move(60,50);
+    draw.use(whiskersGroup).flip('x',50).move(60,50);
 
     catSvg = draw.svg();
 
