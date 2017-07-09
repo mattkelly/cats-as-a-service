@@ -7,34 +7,26 @@ const SVG_PATH = require('svg.path.js');
 const doc = window.document;
 const draw = SVG(doc.documentElement);
 
-const noses = require('./nose.js');
 const colors = require('./colors.js');
 
+require('./nose.js');
+require('./head.js');
+require('./whisker.js');
+
 function getCatSvg() {
-    const head = draw.defs().ellipse(100, 80).fill(colors.lightGray);
+    const head = draw.defs().ellipseHead(100, 80).fill(colors.lightGray);
+  
     const earLeft = draw.defs().polygon([[0,0], [0,40], [40,40]]).fill(colors.darkGray);
     const earRight = draw.defs().polygon([[40,0], [40,40], [0,40]]).fill(colors.darkGray);
     const eye = draw.defs().circle(8, 8).fill(colors.black);
 
-    const whiskerStraight = draw.defs().line(50, 0)
-      .stroke({color: colors.black, width: 0.5});
-    const whiskerAngleUp = draw.defs().line(50, 5)
-      .stroke({color: colors.black, width: 0.5});
-    const whiskerAngleDown = draw.defs().line(50, -5)
-      .stroke({color: colors.black, width: 0.5});
-
     const body = draw.defs().rect(80, 80).radius(20, 20).fill(colors.darkGray);
 
-    var whiskersGroup = draw.defs().group();
-    whiskersGroup.add(whiskerStraight);
-    whiskersGroup.add(whiskerAngleUp);
-    whiskersGroup.add(whiskerAngleDown);
+    // Put everything in a viewbox
+    draw.viewbox(0, 0, 100, 100);
 
+    // Draw the cat
     draw.use(body).move(10, 60);
-
-    const nose = draw.defs().svg(noses.triangleNosePathString);
-
-    const box = draw.viewbox(0, 0, 100, 100);
 
     draw.use(earLeft).move(0, 0);
     draw.use(earRight).move(60, 0);
@@ -44,13 +36,16 @@ function getCatSvg() {
     draw.use(eye).move(22, 30);
     draw.use(eye).move(70, 30);
 
-    const triangleNose = draw.use('triangleNose').scale(0.5, 0.5).move(70, 90).fill(colors.pink);
+    const whiskers = draw.defs().whiskers(50, 10);
+    draw.use(whiskers).move(60,50);
+    draw.use(whiskers).flip('x',50).move(60,50);
 
-    draw.use(whiskersGroup).move(60,50);
-    draw.use(whiskersGroup).flip('x',50).move(60,50);
+    draw.triangleNose(50, 50).move(70, 90).fill(colors.pink);
 
+    // Generate the full SVG
     catSvg = draw.svg();
 
+    // Clear the canvas for next time
     draw.clear();
 
     return catSvg;
