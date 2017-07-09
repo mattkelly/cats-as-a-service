@@ -26,6 +26,6 @@
   "dependencies": {
     "svg.js": "github:mattkelly/svg.js",
     "svg.path.js": "github:mattkelly/svg.path.js",
-    "svgdom": "0.0.15"
+    "svgdom": "github:mattkelly/svgdom"
   }
 }
