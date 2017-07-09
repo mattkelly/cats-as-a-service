@@ -2,17 +2,19 @@ const triangleNosePathString = '<path id="triangleNose" d="M 4.976 -17.287 Q 14.
 
 SVG.TriangleNose = SVG.invent({
   // Define the type of element that should be created
-  create: 'triangleNose',
+  create: function() {
+    SVG.G.call(this);
+    this.svg(triangleNosePathString).scale(0.5, 0.5);
+  },
 
   // Specify from which existing class this shape inherits
-  inherit: SVG.Shape,
+  inherit: SVG.G,
 
   // Add method to parent elements
   construct: {
     // Create a rounded element
     triangleNose: function(width, height) {
-      this.defs().svg(triangleNosePathString);
-      return this.use('triangleNose').scale(0.5, 0.5);
+      return this.put(new SVG.TriangleNose);
     }
   }
 });

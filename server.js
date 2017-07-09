@@ -9,9 +9,7 @@ const draw = SVG(doc.documentElement);
 
 const colors = require('./colors.js');
 
-require('./nose.js');
 require('./head.js');
-require('./whisker.js');
 require('./face.js');
 
 function getCatSvg() {
@@ -31,7 +29,8 @@ function getCatSvg() {
 
     draw.ellipseHead(100, 80).fill(colors.lightGray);
 
-    draw.face();
+    const face = draw.face().move(20, 30);
+    console.log(face.width(), face.height());
 
     // Generate the full SVG
     catSvg = draw.svg();
