@@ -12,8 +12,8 @@ const colors = require('./colors.js');
 
 function getCatSvg() {
     const head = draw.defs().ellipse(100, 80).fill(colors.lightGray);
-    const earLeft = draw.defs().polygon([[0,0], [0,30], [30,30]]).fill(colors.darkGray);
-    const earRight = draw.defs().polygon([[30,0], [30,30], [0,30]]).fill(colors.darkGray);
+    const earLeft = draw.defs().polygon([[0,0], [0,40], [40,40]]).fill(colors.darkGray);
+    const earRight = draw.defs().polygon([[40,0], [40,40], [0,40]]).fill(colors.darkGray);
     const eye = draw.defs().circle(8, 8).fill(colors.black);
 
     const whiskerStraight = draw.defs().line(50, 0)
@@ -23,17 +23,21 @@ function getCatSvg() {
     const whiskerAngleDown = draw.defs().line(50, -5)
       .stroke({color: colors.black, width: 0.5});
 
+    const body = draw.defs().rect(80, 80).radius(20, 20).fill(colors.darkGray);
+
     var whiskersGroup = draw.defs().group();
     whiskersGroup.add(whiskerStraight);
     whiskersGroup.add(whiskerAngleUp);
     whiskersGroup.add(whiskerAngleDown);
 
+    draw.use(body).move(10, 60);
+
     const nose = draw.defs().svg(noses.triangleNosePathString);
 
     const box = draw.viewbox(0, 0, 100, 100);
 
-    draw.use(earLeft).move(2, 0);
-    draw.use(earRight).move(68, 0);
+    draw.use(earLeft).move(0, 0);
+    draw.use(earRight).move(60, 0);
 
     draw.use(head);
 
