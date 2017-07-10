@@ -2,8 +2,8 @@ const util = require('./util.js');
 
 SVG.RoundedRectBody = SVG.invent({
   create: function(width, height) {
-    const bodyRx = util.randInRange(20, bodyRx);
-    const bodyRy = util.randInRange(20, bodyRy);
+    const bodyRx = util.randInRange(20, width);
+    const bodyRy = util.randInRange(20, height);
     console.log('bodyRx = ', bodyRx);
     console.log('bodyRy = ', bodyRy);
 
