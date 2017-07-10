@@ -15,7 +15,7 @@ require('./cat.js');
 
 function getCatSvg() {
   // Put everything in a viewbox
-  draw.viewbox(0, 0, 100, 100);
+  draw.viewbox(0, 0, 100, 120);
 
   // Draw the cat
   draw.cat();
@@ -39,7 +39,11 @@ function getCatPng() {
 var app = express();
 
 app.get('/', function(req, res) {
-  console.log('/');
+  res.redirect('/svg');
+});
+
+app.get('/svg', function(req, res) {
+  console.log('/svg');
   res.writeHead(200, {'Content-type': 'image/svg+xml'});
   res.end(getCatSvg());
 });

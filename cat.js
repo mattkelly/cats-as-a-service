@@ -1,7 +1,8 @@
 const colors = require('./colors.js');
 
-require('./head.js');
+require('./body.js');
 require('./face.js');
+require('./head.js');
 
 SVG.Cat = SVG.invent({
   create: function() {
@@ -13,15 +14,15 @@ SVG.Cat = SVG.invent({
       .stroke({color: colors.darkGray, width: 2, linecap: 'round'});
 
     const head = this.symbol().ellipseHead(100, 80).fill(colors.lightGray);
-    const body = this.symbol().rect(80, 80).radius(20, 20).fill(colors.darkGray);
+
+    const body = this.symbol().roundedRectBody(80, 80).fill(colors.darkGray);
 
     this.use(body).move(10, 70);
     this.use(earLeft).move(2, 2);
     this.use(earRight).move(48, 2);
     this.use(head).move(0, 10);
 
-    const face = this.face(100, 50).move(20, 40);
-    console.log(face.width(), face.height());
+    this.face(100, 50).move(20, 40);
   },
 
   inherit: SVG.G,
