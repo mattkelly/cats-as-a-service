@@ -2,6 +2,7 @@
 
 const colors = require('./colors.js');
 
+require('./eye.js');
 require('./mouth.js');
 require('./nose.js');
 require('./whiskers.js');
@@ -14,8 +15,8 @@ SVG.Face = SVG.invent({
         this._height = height;
 
         const eyeRadius = width/12;
-        this.circle(eyeRadius).fill(colors.black).move(4, 0);
-        this.circle(eyeRadius).fill(colors.black).move(width/2 - 4, 0);
+        this.circleEye(eyeRadius).fill(colors.black).move(4, 0);
+        this.circleEye(eyeRadius).fill(colors.black).move(width/2 - 4, 0);
 
         const noseX = 40; // @TODO don't hardcode
 
