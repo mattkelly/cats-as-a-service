@@ -32,13 +32,13 @@ function getCatSvg() {
     return catSvg;
 }
 
-async function getCatPng() {
+async function getCatPng(size) {
     let catSvg = getCatSvg();
 
     let catPng;
 
     try {
-        catPng = await svg2png(catSvg, {width: 500, height: 500});
+        catPng = await svg2png(catSvg, {width: size, height: size});
     } catch (ex) {
         console.log(ex);
     }
@@ -58,7 +58,12 @@ app.get('/svg', function(req, res) {
 });
 
 app.get('/png', async function(req, res) {
-    const catPng = await getCatPng();
+    let size = 500;
+    if (req.query.size) {
+        size = req.query.size;
+    }
+
+    const catPng = await getCatPng(size);
     if (catPng) {
         res.writeHead(200, {'Content-type': 'image/png'});
         res.end(catPng);
