@@ -1,0 +1,62 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "brace-style": [
+            2,
+            "1tbs",
+            { "allowSingleLine": false }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "curly": [
+            2,
+            "all"
+        ],
+        "comma-dangle": [
+            2,
+            "never"
+        ],
+        "comma-spacing": [
+            2,
+            { "before": false, "after": true }
+        ],
+        "accessor-pairs": 2,
+        "constructor-super": 2,
+        "arrow-spacing": [2, { "before": true, "after": true }],
+        "block-spacing": [2, "always"],
+        "handle-callback-err": [2, "^(err|error)$" ],
+        "no-console": 0,
+        "no-const-assign": 2,
+        "no-cond-assign": 2,
+        "no-irregular-whitespace": 2,
+        "no-trailing-spaces": 2,
+        "no-var": 2,
+        "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+        "space-before-blocks": [2, "always"],
+        "no-octal": 2,
+        "no-redeclare": 2,
+        "no-regex-spaces": 2,
+        "no-octal-escape": 2,
+        "strict": [2, "global"],
+        "space-before-function-paren": [2, "never"],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "keyword-spacing": ["error", { "after": true }]
+    }
+}
+
