@@ -16,8 +16,8 @@ SVG.Face = SVG.invent({
 
         const eyeRadius = width/12;
         // TODO dynamic colors
-        this.circleEye(eyeRadius).fill('black').move(4, 0);
-        this.circleEye(eyeRadius).fill('black').move(width/2 - 4, 0);
+        this.circleEye(eyeRadius).fill('#202020').move(4, 0);
+        this.circleEye(eyeRadius).fill('#202020').move(width/2 - 4, 0);
 
         const noseX = 40; // @TODO don't hardcode
 

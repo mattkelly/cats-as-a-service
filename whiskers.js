@@ -13,7 +13,7 @@ SVG.WhiskersLeft = SVG.invent({
         this.add(whiskerStraight);
         this.add(whiskerAngleUp);
         this.add(whiskerAngleDown);
-        this.stroke({color: 'black', width: 0.5});
+        this.stroke({color: '#202020', width: 0.5});
     },
 
     inherit: SVG.G,
@@ -36,7 +36,7 @@ SVG.WhiskersRight = SVG.invent({
         this.add(whiskerStraight);
         this.add(whiskerAngleUp);
         this.add(whiskerAngleDown);
-        this.stroke({color: 'black', width: 0.5});
+        this.stroke({color: '#202020', width: 0.5});
     },
 
     inherit: SVG.G,

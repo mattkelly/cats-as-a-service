@@ -9,7 +9,7 @@ SVG.SeriousMouth = SVG.invent({
         this.line(10, 0, 10, 15);
         this.line(0, 15, 20, 15);
         // TODO dynamic color
-        this.stroke({color: 'black'});
+        this.stroke({color: '#202020'});
     },
 
     inherit: SVG.G,
