@@ -17,6 +17,9 @@ function getCatSvg() {
   // Put everything in a viewbox
   draw.viewbox(0, 0, 100, 120);
 
+  // Create a background
+  //draw.rect(1000, 1000).move(-500, -500).fill('yellow');
+
   // Draw the cat
   draw.cat();
 
@@ -29,11 +32,18 @@ function getCatSvg() {
   return catSvg;
 }
 
-function getCatPng() {
+async function getCatPng() {
   catSvg = getCatSvg();
 
-  // TODO don't use sync
-  return svg2png.sync(catSvg, {width: 500, height: 500});
+  let catPng;
+
+  try {
+    catPng = await svg2png(catSvg, {width: 500, height: 500});
+  } catch (ex) {
+    console.log(ex);
+  }
+
+  return catPng;
 }
 
 var app = express();
@@ -43,15 +53,18 @@ app.get('/', function(req, res) {
 });
 
 app.get('/svg', function(req, res) {
-  console.log('/svg');
   res.writeHead(200, {'Content-type': 'image/svg+xml'});
   res.end(getCatSvg());
 });
 
-app.get('/png', function(req, res) {
-  console.log('/png');
-  res.writeHead(200, {'Content-type': 'image/png'});
-  res.end(getCatPng());
+app.get('/png', async function(req, res) {
+  const catPng = await getCatPng();
+  if (catPng) {
+    res.writeHead(200, {'Content-type': 'image/png'});
+    res.end(catPng);
+  } else {
+    res.sendStatus(500);
+  }
 });
 
 app.listen(port);
