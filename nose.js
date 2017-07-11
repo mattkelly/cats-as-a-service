@@ -1,3 +1,5 @@
+'use strict';
+
 const triangleNosePathString =
 '<path id="triangleNose" ' +
 'd="M 11 23 ' +
@@ -10,16 +12,16 @@ const triangleNosePathString =
 '/>';
 
 SVG.TriangleNose = SVG.invent({
-  create: function() {
-    SVG.G.call(this);
-    this.svg(triangleNosePathString).scale(0.5, 0.4).move(0,1);
-  },
+    create: function() {
+        SVG.G.call(this);
+        this.svg(triangleNosePathString).scale(0.5, 0.4).move(0, 1);
+    },
 
-  inherit: SVG.G,
+    inherit: SVG.G,
 
-  construct: {
-    triangleNose: function(width, height) {
-      return this.put(new SVG.TriangleNose);
+    construct: {
+        triangleNose: function() {
+            return this.put(new SVG.TriangleNose);
+        }
     }
-  }
 });

@@ -1,32 +1,34 @@
+'use strict';
+
 const util = require('./util.js');
 
 SVG.RoundedRectBody = SVG.invent({
-  create: function(width, height) {
-    const bodyRx = util.randInRange(20, width);
-    const bodyRy = util.randInRange(20, height);
-    console.log('bodyRx = ', bodyRx);
-    console.log('bodyRy = ', bodyRy);
+    create: function(width, height) {
+        const bodyRx = util.randInRange(20, width);
+        const bodyRy = util.randInRange(20, height);
+        console.log('bodyRx = ', bodyRx);
+        console.log('bodyRy = ', bodyRy);
 
-    this.rect(80, 80).radius(bodyRx, bodyRy);
-  },
+        this.rect(80, 80).radius(bodyRx, bodyRy);
+    },
 
-  inherit: SVG.G,
+    inherit: SVG.G,
 
-  construct: {
-    roundedRectBody: function(width, height) {
-      return this.put(new SVG.RoundedRectBody(width, height));
+    construct: {
+        roundedRectBody: function(width, height) {
+            return this.put(new SVG.RoundedRectBody(width, height));
+        }
     }
-  }
 });
 
 SVG.RectBody = SVG.invent({
-  create: 'rect',
+    create: 'rect',
 
-  inherit: SVG.Rect,
+    inherit: SVG.Rect,
 
-  construct: {
-    rectBody: function(width, height) {
-      return this.put(new SVG.RectBody).size(width, height);
+    construct: {
+        rectBody: function(width, height) {
+            return this.put(new SVG.RectBody).size(width, height);
+        }
     }
-  }
 });

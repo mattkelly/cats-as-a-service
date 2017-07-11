@@ -1,11 +1,13 @@
+'use strict';
+
 SVG.EllipseHead = SVG.invent({
-  create: 'ellipse',
+    create: 'ellipse',
 
-  inherit: SVG.Ellipse,
+    inherit: SVG.Ellipse,
 
-  construct: {
-    ellipseHead: function(width, height) {
-      return this.put(new SVG.EllipseHead).size(width, height).move(0, 0);
+    construct: {
+        ellipseHead: function(width, height) {
+            return this.put(new SVG.EllipseHead).size(width, height).move(0, 0);
+        }
     }
-  }
 });
