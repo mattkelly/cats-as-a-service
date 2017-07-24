@@ -4,11 +4,10 @@ const util = require('./util.js');
 
 SVG.RoundedRectBody = SVG.invent({
     create: function(width, height) {
-        const bodyRx = util.randInRange(20, width);
-        const bodyRy = util.randInRange(20, height);
-        console.log('bodyRx = ', bodyRx);
-        console.log('bodyRy = ', bodyRy);
+        SVG.G.call(this);
 
+        const bodyRx = util.randInRange(20, width, 5);
+        const bodyRy = util.randInRange(20, height, 5);
         this.rect(80, 80).radius(bodyRx, bodyRy);
     },
 

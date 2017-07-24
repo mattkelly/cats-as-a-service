@@ -14,6 +14,7 @@ const triangleNosePathString =
 SVG.TriangleNose = SVG.invent({
     create: function() {
         SVG.G.call(this);
+
         this.svg(triangleNosePathString).scale(0.5, 0.4).move(0, 1);
     },
 
