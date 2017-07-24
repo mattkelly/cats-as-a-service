@@ -21,7 +21,8 @@ SVG.Face = SVG.invent({
 
         const noseX = 40; // @TODO don't hardcode
 
-        this.seriousMouth().move(noseX/2, 20);
+        //this.seriousMouth().move(noseX/2, 20);
+        this.normalMouth().move(noseX/2, 90);
 
         this.triangleNose().move(noseX, 30).fill(colorScheme.tertiary);
 
