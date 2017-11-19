@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/mattkelly/cats-as-a-service#readme",
   "dependencies": {
-    "express": "^4.15.3",
+    "express": "^4.16.2",
     "lodash": "^4.17.4",
     "svg.js": "github:mattkelly/svg.js",
     "svg.path.js": "github:mattkelly/svg.path.js",
@@ -35,7 +35,7 @@
     "svgdom": "github:mattkelly/svgdom"
   },
   "devDependencies": {
-    "eslint": "^4.2.0",
+    "eslint": "^4.11.0",
     "eslint-config-google": "^0.9.1"
   }
 }
