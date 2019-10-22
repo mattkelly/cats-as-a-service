@@ -17,8 +17,8 @@ SVG.Face = SVG.invent({
 
         const eyeRadius = width/12;
         // TODO dynamic colors
-        this.circleEye(eyeRadius).fill('#202020').move(4, 0);
-        this.circleEye(eyeRadius).fill('#202020').move(width/2 - 4, 0);
+        this.ovalEye(eyeRadius, '#307047').move(4, 0);
+        this.ovalEye(eyeRadius, '#307047').move(width/2 - 10, 0);
 
         const noseX = 40; // @TODO don't hardcode
 
@@ -32,8 +32,8 @@ SVG.Face = SVG.invent({
 
         this.triangleNose().move(noseX, 30).fill(colorScheme.tertiary);
 
-        this.whiskersRight(width/2, height/3).move(noseX, 15);
-        this.whiskersLeft(width/2, height/3).move(noseX/2, 15);
+        this.whiskersRight(noseX/2, height/3).move(noseX, 15);
+        this.whiskersLeft(noseX/2, height/3).move(noseX/2, 15);
     },
 
     inherit: SVG.G,
